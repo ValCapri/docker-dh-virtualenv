@@ -1,0 +1,31 @@
+#!/bin/bash
+set -xe
+
+: ${BUILD_OPTS=--no-tgz-check --no-lintian -us -uc}
+
+########################################################
+# Prepare folders to build packages
+########################################################
+mkdir -p /tmp/build && cp -R /app/* /tmp/build
+cd /tmp/build
+
+########################################################
+# Get sources through uscan if debian/watch file exists
+########################################################
+if [ -f /tmp/build/debian/watch ]; then
+  uscan --rename --repack --download-current-version --destdir=/tmp; \
+  tar --strip-components=1 -xf /tmp/*.orig.tar.gz
+fi
+
+apt-get update
+mk-build-deps \
+  --tool "apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes --force-yes" \
+  --install
+rm -f *-build-deps*.deb
+debuild ${BUILD_OPTS}
+
+########################################################
+# Copy debian artifacts
+########################################################
+mkdir -p /output
+cp -v ../*.{changes,deb,dsc,tar.gz,tar.xz} /output
