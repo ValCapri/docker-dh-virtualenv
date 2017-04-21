@@ -6,7 +6,7 @@ set -xe
 #-------------------------------------------------------------------------------
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y --no-install-recommends python-software-properties software-properties-common
 add-apt-repository ppa:sebdoido/spotify-dh-virtualenv-stable-0.11
 
 apt-get update
