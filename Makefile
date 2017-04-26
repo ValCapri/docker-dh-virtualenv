@@ -1,6 +1,6 @@
 DISTRIBUTION ?= $(shell git rev-parse --abbrev-ref HEAD)
 REPOSITORY   ?= sebdoido/docker-dh-virtualenv
-VERSION      ?= 0.11
+VERSION      ?= 1.0
 BUILD_ID     ?= $(shell date +%Y%m%d)
 IMAGE        ?= $(REPOSITORY):$(DISTRIBUTION)-$(VERSION)-$(BUILD_ID)
 
