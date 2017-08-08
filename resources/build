@@ -7,7 +7,6 @@ set -xe
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y --no-install-recommends software-properties-common
-add-apt-repository ppa:sebdoido/spotify-dh-virtualenv-stable-${application_version}
 
 apt-get update
 apt-get install -y --no-install-recommends \
@@ -24,9 +23,10 @@ apt-get install -y --no-install-recommends \
 	python-all \
 	python-pip \
 	python-setuptools \
-  python-virtualenv
+  python-virtualenv \
+  python3-dev \
+  python3-pip 
 
-curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python2.7
 pip --version
 
 #-------------------------------------------------------------------------------

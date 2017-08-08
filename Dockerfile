@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM debian:jessie-backports
 MAINTAINER Sebastien DOIDO <s.doido@gmail.com>
 
 ARG application_version
