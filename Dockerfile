@@ -1,4 +1,4 @@
-FROM debian:jessie-backports
+FROM debian:stretch-backports
 MAINTAINER Sebastien DOIDO <s.doido@gmail.com>
 
 ARG application_version
